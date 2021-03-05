@@ -20,5 +20,5 @@ void sleep(int a) {
 int getpid() {return 20;} //! http://websvn.kolibrios.org/filedetails.php?repname=Kolibri+OS&path=%2Fprograms%2Fdevelop%2Flibraries%2Fmenuetlibc%2Fsrc%2Flibc%2Fposix%2Funistd%2Fgetpid.c
 int getuid() {return 42;}
 int getpwuid() {return 20;} //???
-int fsync() {return 0;}
+int fsync(int _fd) {return 0;}
 int ftruncate() {return -1;} //! http://websvn.kolibrios.org/filedetails.php?repname=Kolibri+OS&path=%2Fprograms%2Fdevelop%2Flibraries%2Fmenuetlibc%2Fsrc%2Flibc%2Fcompat%2Funistd%2Fftruncat.c

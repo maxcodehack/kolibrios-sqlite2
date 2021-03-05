@@ -1,6 +1,8 @@
 #include <sys/kos.h>
+#include <stdlib.h>
+
 void __chkstk_ms() {}
-#define NULL 0
+
 char *getcwd(char *buf, unsigned size)
 {
     if(buf == NULL){
@@ -17,8 +19,15 @@ char *getcwd(char *buf, unsigned size)
 void sleep(int a) {
 	kos_Delay(a);
 }
-int getpid() {return 20;} //! http://websvn.kolibrios.org/filedetails.php?repname=Kolibri+OS&path=%2Fprograms%2Fdevelop%2Flibraries%2Fmenuetlibc%2Fsrc%2Flibc%2Fposix%2Funistd%2Fgetpid.c
+
+
+struct proc_info info__;
+int getpid() {
+	kos_ProcessInfo((char*)&info__);
+	return info__.ID;
+}
 int getuid() {return 42;}
+
 int getpwuid() {return 20;} //???
 int fsync(int _fd) {return 0;}
 int ftruncate() {return -1;} //! http://websvn.kolibrios.org/filedetails.php?repname=Kolibri+OS&path=%2Fprograms%2Fdevelop%2Flibraries%2Fmenuetlibc%2Fsrc%2Flibc%2Fcompat%2Funistd%2Fftruncat.c
